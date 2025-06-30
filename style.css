@@ -1,0 +1,306 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Navbar Styling --- */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    position: relative; /* Needed for absolute positioning of the collapsed menu */
+}
+
+/* Wrapper for centered content in the navbar */
+.navbar-content {
+    max-width: 1200px; /* Limit width of navbar content */
+    margin: 0 auto; /* Center the content */
+    padding: 15px 30px; /* Internal padding */
+    display: flex;
+    justify-content: space-between; /* Spreads brand, links, and language apart */
+    align-items: center;
+}
+
+/* Navbar Left (Brand) */
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand {
+    margin: 0;
+    font-size: 1.8em;
+    color: #007bff;
+}
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none; /* Hidden by default on desktop */
+}
+
+/* Nav Elements Collapse (Desktop Links & Language Switcher, also Mobile Menu Content) */
+.nav-elements-collapse {
+    display: flex; /* Display as flex on desktop */
+    align-items: center;
+    gap: 30px; /* Space between links and language switcher */
+}
+
+.navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px; /* Space between nav links */
+}
+
+.navbar-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.navbar-links li a:hover {
+    color: #007bff;
+}
+
+/* Underline effect for active/hover links */
+.navbar-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.navbar-links li a:hover::after {
+    width: 100%;
+}
+
+
+/* Language Switcher */
+.language-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+.language-switcher button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-switcher button i {
+    margin-right: 5px;
+    font-size: 1em;
+}
+
+.language-switcher button:hover {
+    background-color: #777;
+}
+
+.language-switcher button.active {
+    background-color: #007bff;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,123,255,0.3);
+}
+
+/* --- Container for Main Content --- */
+.container {
+    flex-grow: 1;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#game-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Individual Game Card Styling */
+.game-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+}
+
+.game-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.game-card h2 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin: 15px 0 10px;
+}
+
+.game-card p {
+    font-size: 1em;
+    padding: 0 15px 15px;
+    flex-grow: 1;
+}
+
+.game-card .button-container {
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #eee;
+}
+
+.game-card button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.game-card button:hover {
+    background-color: #218838;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: auto;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+}
+
+/* --- Media Queries for Responsive Design --- */
+
+@media (max-width: 768px) {
+    .navbar-content {
+        padding: 15px 20px;
+        flex-wrap: nowrap; /* Prevent wrapping the header parts */
+        justify-content: space-between; /* Brand left, hamburger right */
+    }
+
+    /* Show hamburger menu on mobile */
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* Hide the nav elements collapse on mobile by default */
+    .nav-elements-collapse {
+        display: block; /* Change to block to allow absolute positioning */
+        position: absolute;
+        top: 100%; /* Position below the main navbar bar */
+        left: 0;
+        width: 100%;
+        background-color: #333; /* Match navbar background */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1000;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        max-height: 0; /* Initially collapsed */
+        padding: 0; /* No padding when collapsed */
+        flex-direction: column; /* Stack items vertically when active */
+        align-items: center; /* Center items in the column */
+        gap: 0; /* Reset desktop gap */
+    }
+
+    .nav-elements-collapse.active {
+        max-height: 300px; /* Adjust based on content height when open */
+        padding: 20px 0; /* Add padding when active */
+        display: flex; /* Make it flex again when active for column layout */
+    }
+
+    /* Adjust items within the mobile menu */
+    .navbar-links {
+        flex-direction: column; /* Stack links vertically */
+        width: 100%; /* Take full width */
+        gap: 15px; /* Space between stacked links */
+        margin-bottom: 15px; /* Space between links and language switcher */
+    }
+
+    .navbar-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-links li a {
+        padding: 10px 0; /* More padding for easier tapping */
+        display: block; /* Make links block level for full width click */
+        font-size: 1.2em; /* Slightly larger font for mobile */
+    }
+
+    .language-switcher {
+        flex-direction: row; /* Buttons remain side-by-side */
+        justify-content: center; /* Center the buttons */
+        width: 100%;
+        margin-bottom: 10px; /* Space above footer if content is short */
+    }
+
+    .language-switcher button {
+        width: auto;
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+
+    .container {
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-content {
+        padding: 15px;
+    }
+    .navbar-brand {
+        font-size: 1.5em;
+    }
+    .language-switcher button {
+        font-size: 0.8em;
+        padding: 8px 10px;
+    }
+}
